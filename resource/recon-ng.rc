@@ -58,6 +58,8 @@ run
 
 use recon/netblocks-companies/whois_orgs
 run
+use recon/netblocks-hosts/reverse_resolve
+run
 use recon/netblocks-hosts/shodan_net
 run
 use recon/netblocks-ports/census_2012
@@ -71,6 +73,8 @@ run
 use recon/hosts-hosts/bing_ip
 run
 use recon/hosts-hosts/ssltools
+run
+use recon/hosts-hosts/reverse_resolve
 run
 use recon/hosts-ports/shodan_ip
 run
