@@ -6,8 +6,9 @@ Burp Suite
 www.jython.org/downloads.html
 Download Jython Standalone Jar
 Move to /Applications/
-------------------------------------------------------------------------------------------------------
+Configure its location under Extender > Options
 
+```
 # Firefox plugins
 
 Cookies Manager+
@@ -24,9 +25,9 @@ HTTP Proxy: 127.0.0.1
 Port: 8080
 Use this proxy server for all protocols.
 No proxy for: delete anything in here
-------------------------------------------------------------------------------------------------------
+```
 
-# Set up
+## Set up
 
 Open Burp
 New project on disk > Choose file > burp-project > Save
@@ -45,13 +46,13 @@ Check Trust this CA to identify websites > OK > OK
 Restart Firefox
 ------------------------------------------------------------------------------------------------------
 
-# Options
+## Options
 
-Target > Site map:
+###Target > Site map:
      Right click on any pane > View > Tabs
      Filter > restore defaults > Filter
 
-Proxy:
+###Proxy:
      Intercept
           Intercept is off
      Options:
@@ -67,9 +68,18 @@ Proxy:
 
           Match & Replace:
 	       Scroll to the bottom and enable X-XXS-Protection: 0
+	       Add in a Match: True , Replace: False (just to see what breaks, leave unchecked by default)
+	       Add in a Match: False, Replace: True (to see if you get extra access to things you should not)
+	  Response Modification
+	  	Select "Unhide hidden forms in fields"
+		Select "Convert HTTPS links to HTTP"
+		Select "Remove Secure flag from cookies"
+		
 
-Spider > Options:
+###Spider > Options:
      Form Submission > age: 36
+     Form Submission > Prompt For Guidance
+     	When guidance comes up, can change the field values to ' or " or to some illegal unicode
      Spider Engine > Number of retries on network failure: 2
      
 Scanner:
@@ -79,6 +89,7 @@ Scanner:
           Active Scanning Engine > Number of retries on network failure: 2
           Active Scanning Optimization > Scan speed: Thorough
           Static Code Analysis > Don’t perform static code analysis
+	  Per Graph-X: Set Static Code Analysis > Active and passive scanning
      
 Intruder > Options:
      Request Engine:
@@ -88,6 +99,7 @@ Intruder > Options:
 Extender:
      BApp Store:
           CO2, J2EEScan, Paramalyzer, Retire.js, Site Map Fetcher, Wsdler, and XSS Validator
+	  From Graph-X:  Active Scan ++, Additional Scanner Checks, Software Version Number, Hackvertor (for when you see 			unicode, etc.  Can decode quick for more insight), JSON Decoder (this is a HUGE timesaver)	
      Options:
           Python Environment > Select file > Browse to /Applications/jython-standalone-(version).jar > Open  
 
@@ -108,22 +120,22 @@ Burp > User options > Save user options: burp-user
 This will provide you a starting point for all future scans.
 ------------------------------------------------------------------------------------------------------
 
-# Methodology
+## Methodology
 
-# Scope
+### Scope
 Firefox > surf to the target site and click on a couple of links.
 Burp > Target > Site map > right click (RC) on the target URL > Add to scope
 Target > Scope: you will see the URL listed in the top window
 Target > Site map > Filter: enable Show only in-scope items > Filter
 
-# Manually browse the app
+### Manually browse the app
 Look for target.com/sitemap.
 If present, hold down the Command key and click on about 20 links.
 If not present, start exploring the target by clicking on every link on every page.
 Enter a single tick (') in any input field.
 Continue until you have thoroughly browsed the target.
 
-# Spider the app
+### Spider the app
 Target > Site map > RC on the target URL > Spider this host
 Spider > Control: watch the Requests made increase.
 When the Requests and Forms queued are both zero, click Spider is running.
@@ -135,7 +147,7 @@ RC on any pages that are grey or red > Copy URL > paste into Firefox
      Or RC on any pages that are grey or red > GET Empty Response
 Save the state: <appname>-spider
 
-# Brute force directories
+### Brute force directories
 Target > Site map > RC on the second line '/' > Send to Intruder
 Intruder > Position > Attack type: Sniper
 Clear §
@@ -163,17 +175,17 @@ Add remaining items to Site map:
      Firefox > open a new tab > paste
      Repeat with the remaining lines.
 
-# Grey folders
+### Grey folders
 RC on grey folder > GET Empty Response
 If the folder is still grey > RC > Delete branch > Yes
 
-# Review comments
+### Review comments
 Target > Site map > RC the target URL > Engagement tools > Find comments
 Sort by Item
 Review each line item for sensitive information.
 ---------------------------------------------------------------
 
-# Brute force logins
+## Brute force logins
 Try to login
 Proxy > History > find the POST request > RC > Send to Intruder
 
