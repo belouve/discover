@@ -1,24 +1,24 @@
-Burp Suite
+# Burp Suite
 
 
-# Jython
-
-www.jython.org/downloads.html
-Download Jython Standalone Jar
-Move to /Applications/
-Configure its location under Extender > Options
-
+## Jython
 ```
-# Firefox plugins
+www.jython.org/downloads.html
+* Download Jython Standalone Jar
+* Move to /Applications/
+* Configure its location under Extender > Options
+```
 
+## Firefox plugins
+```
 Cookies Manager+
 FoxyProxy Standard
 Live HTTP headers (clone)
 User-Agent Switcher
 Wappalyzer
-
-# Firefox proxy
-
+```
+## Firefox Proxy
+```
 Preferences > Advanced > Network > Settings
 Manual proxy configuration
 HTTP Proxy: 127.0.0.1
@@ -28,31 +28,30 @@ No proxy for: delete anything in here
 ```
 
 ## Set up
-
+```
 Open Burp
 New project on disk > Choose file > burp-project > Save
 Name: Base
 Next
 Use Burp defaults > Start Burp
-------------------------------------------------------------------------------------------------------
-
-# Certificate
-
+```
+## Certificate
+```
 Open Firefox to http://burp
 CA Certificate > Save File
 Preferences > Advanced > Certificates > View Certificates > Authorities > Import
 Select the certificate that you previously downloaded > Open
 Check Trust this CA to identify websites > OK > OK
 Restart Firefox
-------------------------------------------------------------------------------------------------------
+```
 
 ## Options
-
-###Target > Site map:
+```
+### Target > Site map:
      Right click on any pane > View > Tabs
      Filter > restore defaults > Filter
 
-###Proxy:
+### Proxy:
      Intercept
           Intercept is off
      Options:
@@ -76,7 +75,7 @@ Restart Firefox
 		Select "Remove Secure flag from cookies"
 		
 
-###Spider > Options:
+### Spider > Options:
      Form Submission > age: 36
      Form Submission > Prompt For Guidance
      	When guidance comes up, can change the field values to ' or " or to some illegal unicode
@@ -115,27 +114,33 @@ User options:
      Misc:
           Proxy Interception: Always disable
           Performance Feedback: uncheck Submit anonymous feedback about Burp's performance
-
+```
+## Save configuration
+```
 Burp > User options > Save user options: burp-user
 This will provide you a starting point for all future scans.
-------------------------------------------------------------------------------------------------------
+```
+
 
 ## Methodology
 
 ### Scope
+```
 Firefox > surf to the target site and click on a couple of links.
 Burp > Target > Site map > right click (RC) on the target URL > Add to scope
 Target > Scope: you will see the URL listed in the top window
 Target > Site map > Filter: enable Show only in-scope items > Filter
-
+```
 ### Manually browse the app
+```
 Look for target.com/sitemap.
 If present, hold down the Command key and click on about 20 links.
 If not present, start exploring the target by clicking on every link on every page.
 Enter a single tick (') in any input field.
 Continue until you have thoroughly browsed the target.
-
+```
 ### Spider the app
+```
 Target > Site map > RC on the target URL > Spider this host
 Spider > Control: watch the Requests made increase.
 When the Requests and Forms queued are both zero, click Spider is running.
@@ -146,8 +151,9 @@ RC on any folders that are greyed out > Delete branch
 RC on any pages that are grey or red > Copy URL > paste into Firefox
      Or RC on any pages that are grey or red > GET Empty Response
 Save the state: <appname>-spider
-
+```
 ### Brute force directories
+```
 Target > Site map > RC on the second line '/' > Send to Intruder
 Intruder > Position > Attack type: Sniper
 Clear §
@@ -174,18 +180,21 @@ Add remaining items to Site map:
      Check: In future, just copy the URL and don't show this dialog > Copy
      Firefox > open a new tab > paste
      Repeat with the remaining lines.
-
+```
 ### Grey folders
+```
 RC on grey folder > GET Empty Response
 If the folder is still grey > RC > Delete branch > Yes
-
+```
 ### Review comments
+```
 Target > Site map > RC the target URL > Engagement tools > Find comments
 Sort by Item
 Review each line item for sensitive information.
----------------------------------------------------------------
+```
 
 ## Brute force logins
+```
 Try to login
 Proxy > History > find the POST request > RC > Send to Intruder
 
@@ -251,35 +260,37 @@ Intruder > Payloads > Attack type:
 Filter > uncheck 4xx [request error] > Filter
 Click Status to sort by ascending.
 Look for a 302 (redirect). This should be a successful login.
-
-# Actively scan the app
+```
+## Actively scan the app
+```
 Spider > Control > Spider is paused
 Target > Site map > RC on the target URL > Actively scan this host
 Active scanning wizard: check all boxes > Next > Ok
 Scanner > Scan queue > RC > Resume scanner
 Scanner > Scan queue > RC > Hide finished items
-------------------------------------------------------------------------------------------------------
+```
 
-# Alerts
-
+## Alerts
+```
 If you start seeing an increase in java.net.SocketException: Connection reset
 Scanner > Options:
      Active Scanning Engine: enable Throttle between requestions: 200
      Active Scanning Optimization > Scan Accuracy: Normal
-------------------------------------------------------------------------------------------------------
+```
 
-# Authentication
 
+## Authentication
+```
 User options > Connections > Platform Authentication > Add
      Destination host: target URL
      Authentication type: Basic, NTLMv1, NTLMv2 or Digest
      Username and Password
 Domain and Hostname are only used for NTLM.
 OK
-------------------------------------------------------------------------------------------------------
+```
 
-# CSRF
-
+## CSRF
+```
 You should be logged into the web application.
 Create a list of all POST requests that do not have a unique token called ‘CSRF_Token’. 
 
@@ -295,17 +306,19 @@ Look for evidence that it executed whatever that HTTP request was supposed to do
 
 https://support.portswigger.net/customer/portal/articles/1965674-using-burp-to-test-for-cross-site-request-forgery-csrf-
 https://portswigger.net/burp/help/suite_functions_csrfpoc.html
-------------------------------------------------------------------------------------------------------
+```
 
-# Manually Validate Findings
 
+## Manually Validate Findings
+```
 File path traversal: RC in the Request body > Send to Repeater > modify the request 
 XML Injection: Search in the Response body for http://www.w3.org/2001/XMLSchema. This is a false positive.
 XSS: RC in the Request body > Request in browser > In current browser session
-------------------------------------------------------------------------------------------------------
+```
 
-# Mobile app testing
 
+## Mobile app testing
+```
 Proxy > Options > Proxy Listeners > Add > Binding:
      Bind to port: 8081
      Bind to address: All interfaces
@@ -319,8 +332,9 @@ HTTP PROXY > Manual
 Safari > http://burp
      Select CA Certificate
      It will prompt you to install, then ask for your password
-------------------------------------------------------------------------------------------------------
+```
 
-# Reporting
-
+## Reporting
+```
 Select all remaining findings > RC > Report selected issues > Next 4x > enter file location > Next > Close
+```
