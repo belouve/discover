@@ -16,6 +16,14 @@ if [ ! -f tld.rb.bak ]; then
     mv tld_tmp.rb tld.rb
 fi
 
+# Set execute permissions on the proper files
+chmod -v +x /opt/discover/discover-sd.sh
+chmod -v +x /opt/discover/resource/recon-ng-sd.rc
+chmod -v +x /usr/share/theharvester/theHarvester.py
+
+echo
+echo
+
 #########################################################
 
 if [ -d /pentest ]; then
