@@ -3,12 +3,19 @@ Follow on Twitter [![Twitter Follow](https://img.shields.io/twitter/follow/shiel
 
 For use with Kali Linux. Custom bash scripts used to automate various pentesting tasks.
 
+### What is different in my version?
+* There is a discover-sd.sh file, which is a slimmed down subdomain-specific version
+* The discover-sd.sh script calls a different recon-ng
+* New recon-ng-sd.rc skips some checks (Twitter) and also does not open all the webpages at end
+* New update.sh sets proper chmod +x on files when run (so theHarvester gets the right permissions)
+* Updated notes on Burp Suite
+
+
 ### Download, setup & usage
-* git clone https://github.com/leebaird/discover /opt/discover/
+* git clone https://github.com/belouve/discover /opt/discover/
 * All scripts must be ran from this location.
 * cd /opt/discover/
 * ./update.sh
-* chmod +x /usr/share/theHarvester.py
 
 ```
 RECON
