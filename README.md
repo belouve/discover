@@ -5,6 +5,7 @@ For use with Kali Linux. Custom bash scripts used to automate various pentesting
 
 ### What is different in my version?
 * There is a discover-sd.sh file, which is a slimmed down subdomain-specific version
+* The discover-sd.sh script only has Domain (Passive), Update, and Exit as available options
 * The discover-sd.sh script calls a different recon-ng
 * New recon-ng-sd.rc skips some checks (Twitter) and also does not open all the webpages at end
 * New update.sh sets proper chmod +x on files when run (so theHarvester gets the right permissions)
