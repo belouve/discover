@@ -173,16 +173,15 @@ case $choice in
      echo -e "\x1B[1;34mUses ARIN, dnsrecon, goofile, goog-mail, goohost, theHarvester,\x1B[0m"
      echo -e "\x1B[1;34m Metasploit, URLCrazy, Whois, multiple websites, and recon-ng.\x1B[0m"
      echo
-     echo -e "\x1B[1;34m[*] The cool kids use API keys for Bing, Builtwith, Fullcontact, GitHub,\x1B[0m"
+     echo -e "\x1B[1;34m[*] Acquire API keys for Bing, Builtwith, Fullcontact, GitHub,\x1B[0m"
      echo -e "\x1B[1;34m Google, Hashes, and Shodan for maximum results with recon-ng.\x1B[0m"
      echo
-     sleep 2
      echo $medium
      echo
      echo "Usage"
      echo
-     echo "Company: [The actual target company name]"
-     echo "Domain:  TargetofOurRecon.com"
+     echo "Company: Target"
+     echo "Domain:  target.com"
      echo
      echo $medium
      echo
@@ -201,6 +200,18 @@ case $choice in
      if [[ -z $domain ]]; then
           f_error
      fi
+
+     # Setting up folder structure
+     # First make an 'old scans' folder
+     mkdir -p $home/data/old_scans
+     # Then copy any current scan data to the 'old scans' folder, to prevent overwrites
+     # Will just error if there is no previous data
+     echo $medium
+     echo "Moving Old Scan Data (if present)"
+     mv $home/data/$domain/ /root/data/old_scans/$domain-moved-"$(date -I)"
+     echo "If you see an mv error here, just means no old data"
+     # NOW we make our domain directory
+
 
      # If folder doesn't exist, create it
      if [ ! -d $home/data/$domain ]; then
@@ -875,15 +886,9 @@ case $choice in
 
      2)
      clear
-     echo -e "\x1B[1;31mI said NOT AUTHORIZED\x1B[0m"
-     sleep 1
-     echo -e "\x1B[1;31mYour mother called. She wants her menu driven UI back.\x1B[0m"
-     sleep 2
-     echo -e "\x1B[1;31mNow go avay or I shall taunt you a second time-a!\x1B[0m"
-     sleep 3
+     echo -e "\x1B[1;34mI said NOT AUTHORIZED\x1B[0m"
      echo
      f_error
-# Yes, I insult the user and then force it back to prev menus -@ulicbelouve
 
      echo -e "\x1B[1;34mUses Nmap, dnsrecon, Fierce, lbd, WAF00W, traceroute, and Whatweb.\x1B[0m"
      echo
