@@ -1,0 +1,7 @@
+setg RHOSTS file:
+setg THREADS 255
+setg RPORT 135
+
+use auxiliary/scanner/dcerpc/tcp_dcerpc_auditor
+run
+
