@@ -2846,149 +2846,150 @@ echo -e "\x1B[1;34mUsing the following resource files.\x1B[0m"
 cp -R $discover/resource/ /tmp/
 
 echo workspace -a $name > /tmp/master
+echo spool $name/msf-spool.txt > /tmp/master
 
 if [[ -e $name/19.txt ]]; then
-     echo "     CHARGEN"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$discover\/$name\/19.txt|g" /tmp/resource/chargen.rc
-     cat /tmp/resource/chargen.rc >> /tmp/master
+     echo "     Chargen Probe Utility"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$discover\/$name\/19.txt|g" /tmp/resource/19-chargen.rc
+     cat /tmp/resource/19-chargen.rc >> /tmp/master
 fi
 
 if [[ -e $name/21.txt ]]; then
      echo "     FTP"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/21.txt|g" /tmp/resource/ftp.rc
-     cat /tmp/resource/ftp.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/21.txt|g" /tmp/resource/21-ftp.rc
+     cat /tmp/resource/21-ftp.rc >> /tmp/maste
 fi
 
 if [[ -e $name/22.txt ]]; then
      echo "     SSH"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/22.txt|g" /tmp/resource/ssh.rc
-     cat /tmp/resource/ssh.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/22.txt|g" /tmp/resource/22-ssh.rc
+     cat /tmp/resource/22-ssh.rc >> /tmp/master
 fi
 
 if [[ -e $name/23.txt ]]; then
      echo "     Telnet"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/23.txt|g" /tmp/resource/telnet.rc
-     cat /tmp/resource/telnet.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/23.txt|g" /tmp/resource/23-telnet.rc
+     cat /tmp/resource/23-telnet.rc >> /tmp/master
 fi
 
 if [[ -e $name/25.txt ]]; then
      echo "     SMTP"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/25.txt|g" /tmp/resource/smtp.rc
-     cat /tmp/resource/smtp.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/25.txt|g" /tmp/resource/25-smtp.rc
+     cat /tmp/resource/25-smtp.rc >> /tmp/master
 fi
 
 if [[ -e $name/69.txt ]]; then
      echo "     TFTP"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/69.txt|g" /tmp/resource/tftp.rc
-     cat /tmp/resource/tftp.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/69.txt|g" /tmp/resource/69-tftp.rc
+     cat /tmp/resource/69-tftp.rc >> /tmp/master
 fi
 
 if [[ -e $name/79.txt ]]; then
      echo "     Finger"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/79.txt|g" /tmp/resource/finger.rc
-     cat /tmp/resource/finger.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/79.txt|g" /tmp/resource/79-finger.rc
+     cat /tmp/resource/79-finger.rc >> /tmp/master
 fi
 
 if [[ -e $name/80.txt ]]; then
      echo "     Lotus"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/80.txt|g" /tmp/resource/lotus.rc
-     cat /tmp/resource/lotus.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/80.txt|g" /tmp/resource/80-lotus.rc
+     cat /tmp/resource/80-lotus.rc >> /tmp/master
 fi
 
 if [[ -e $name/80.txt ]]; then
      echo "     SCADA Indusoft WebStudio NTWebServer"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/80.txt|g" /tmp/resource/scada3.rc
-     cat /tmp/resource/scada3.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/80.txt|g" /tmp/resource/80-scada.rc
+     cat /tmp/resource/80-scada.rc >> /tmp/master
 fi
 
 if [[ -e $name/110.txt ]]; then
      echo "     POP3"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/110.txt|g" /tmp/resource/pop3.rc
-     cat /tmp/resource/pop3.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/110.txt|g" /tmp/resource/110-pop3.rc
+     cat /tmp/resource/110-pop3.rc >> /tmp/master
 fi
 
 if [[ -e $name/111.txt ]]; then
      echo "     NFS"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/111.txt|g" /tmp/resource/nfs.rc
-     cat /tmp/resource/nfs.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/111.txt|g" /tmp/resource/111-nfs.rc
+     cat /tmp/resource/111-nfs.rc >> /tmp/master
 fi
 
 if [[ -e $name/123.txt ]]; then
      echo "     NTP"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/123.txt|g" /tmp/resource/ntp.rc
-     cat /tmp/resource/ntp.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/123.txt|g" /tmp/resource/123-ntp.rc
+     cat /tmp/resource/123-ntp.rc >> /tmp/master
 fi
 
 if [[ -e $name/135.txt ]]; then
      echo "     DCE/RPC"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/135.txt|g" /tmp/resource/dcerpc.rc
-     cat /tmp/resource/dcerpc.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/135.txt|g" /tmp/resource/135-dcerpc.rc
+     cat /tmp/resource/135-dcerpc.rc >> /tmp/master
 fi
 
 if [[ -e $name/137.txt ]]; then
      echo "     NetBIOS"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/137.txt|g" /tmp/resource/netbios.rc
-     cat /tmp/resource/netbios.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/137.txt|g" /tmp/resource/137-netbios.rc
+     cat /tmp/resource/137-netbios.rc >> /tmp/master
 fi
 
 if [[ -e $name/143.txt ]]; then
      echo "     IMAP"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/143.txt|g" /tmp/resource/imap.rc
-     cat /tmp/resource/imap.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/143.txt|g" /tmp/resource/143-imap.rc
+     cat /tmp/resource/143-imap.rc >> /tmp/master
 fi
 
 if [[ -e $name/161.txt ]]; then
      echo "     SNMP"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/161.txt|g" /tmp/resource/snmp.rc
-     cat /tmp/resource/snmp.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/161.txt|g" /tmp/resource/143-snmp.rc
+     cat /tmp/resource/143-snmp.rc >> /tmp/master
 fi
 
 if [[ -e $name/407.txt ]]; then
      echo "     Motorola"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/407.txt|g" /tmp/resource/motorola.rc
-     cat /tmp/resource/motorola.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/407.txt|g" /tmp/resource/407-motorola.rc
+     cat /tmp/resource/407-motorola.rc >> /tmp/master
 fi
 
 if [[ -e $name/443.txt ]]; then
      echo "     VMware"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/443.txt|g" /tmp/resource/vmware.rc
-     cat /tmp/resource/motorola.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/443.txt|g" /tmp/resource/443-vmware.rc
+     cat /tmp/resource/443-vmware.rc >> /tmp/master
 fi
 
 if [[ -e $name/445.txt ]]; then
      echo "     SMB"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/445.txt|g" /tmp/resource/smb.rc
-     cat /tmp/resource/smb.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/445.txt|g" /tmp/resource/445-smb.rc
+     cat /tmp/resource/445-smb.rc >> /tmp/master
 fi
 
 if [[ -e $name/465.txt ]]; then
      echo "     SMTP/S"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/465.txt|g" /tmp/resource/smtp2.rc
-     cat /tmp/resource/smtp2.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/465.txt|g" /tmp/resource/465-smtp.rc
+     cat /tmp/resource/465-smtp.rc >> /tmp/master
 fi
 
 if [[ -e $name/502.txt ]]; then
      echo "     SCADA Modbus Client Utility"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/502.txt|g" /tmp/resource/scada5.rc
-     cat /tmp/resource/scada5.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/502.txt|g" /tmp/resource/502-scada.rc
+     cat /tmp/resource/502-scada.rc >> /tmp/master
 fi
 
 if [[ -e $name/512.txt ]]; then
      echo "     Rexec"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/512.txt|g" /tmp/resource/rservices.rc
-     cat /tmp/resource/rservices.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/512.txt|g" /tmp/resource/512-rexec.rc
+     cat /tmp/resource/512-rexec.rc >> /tmp/master
 fi
 
 if [[ -e $name/513.txt ]]; then
      echo "     rlogin"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/513.txt|g" /tmp/resource/rservices2.rc
-     cat /tmp/resource/rservices2.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/513.txt|g" /tmp/resource/513-rlogin.rc
+     cat /tmp/resource/513-rlogin.rc >> /tmp/master
 fi
 
 if [[ -e $name/514.txt ]]; then
      echo "     rshell"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/514.txt|g" /tmp/resource/rservices3.rc
-     cat /tmp/resource/rservices3.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/514.txt|g" /tmp/resource/514-rshell.rc
+     cat /tmp/resource/514-rshell.rc >> /tmp/master
 fi
 
 if [[ -e $name/523.txt ]]; then
@@ -3011,14 +3012,26 @@ fi
 
 if [[ -e $name/771.txt ]]; then
      echo "     SCADA Digi"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/771.txt|g" /tmp/resource/scada2.rc
-     cat /tmp/resource/scada2.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/771.txt|g" /tmp/resource/771-scada.rc
+     cat /tmp/resource/771-scada.rc >> /tmp/master
+fi
+
+if [[ -e $name/831.txt ]]; then
+     echo "     EasyCafe Server Remote File Access"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/831.txt|g" /tmp/resource/easycafe.rc
+     cat /tmp/resource/easycafe.rc >> /tmp/master
 fi
 
 if [[ -e $name/902.txt ]]; then
      echo "     VMware"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/902.txt|g" /tmp/resource/vmware2.rc
-     cat /tmp/resource/motorola.rc >> /tmp/master
+     +     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/902.txt|g" /tmp/resource/902-vmware.rc
+     cat /tmp/resource/902-vmware.rc >> /tmp/master
+fi
+
+if [[ -e $name/998.txt ]]; then
+     echo "     Novell ZENworks Configuration Management Preboot Service Remote File Access"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/998.txt|g" /tmp/resource/998-zenworks.rc
+     cat /tmp/resource/998-zenworks.rc >> /tmp/master
 fi
 
 if [[ -e $name/1099.txt ]]; then
@@ -3073,6 +3086,12 @@ if [[ -e $name/3000.txt ]]; then
      echo "     EMC"
      sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/3000.txt|g" /tmp/resource/emc.rc
      cat /tmp/resource/emc.rc >> /tmp/master
+fi
+
+if [[ -e $name/3050.txt ]]; then
+     echo "     Borland InterBase Services Manager Information"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/3050.txt|g" /tmp/resource/borland.rc
+     cat /tmp/resource/borland.rc >> /tmp/master
 fi
 
 if [[ -e $name/3306.txt ]]; then
@@ -3197,8 +3216,8 @@ fi
 
 if [[ -e $name/8222.txt ]]; then
      echo "     VMware"
-     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/8222.txt|g" /tmp/resource/vmware.rc
-     cat /tmp/resource/vmware.rc >> /tmp/master
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/8222.txt|g" /tmp/resource/8222-vmware.rc
+     cat /tmp/resource/8222-vmware.rc >> /tmp/master
 fi
 
 if [[ -e $name/8400.txt ]]; then
@@ -3213,6 +3232,19 @@ if [[ -e $name/8834.txt ]]; then
      cat /tmp/resource/nessus.rc >> /tmp/master
 fi
 
+if [[ -e $name/9000.txt ]]; then
+     echo "     Sharp DVR Password Retriever"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/9000.txt|g" /tmp/resource/sharp.rc
+     cat /tmp/resource/sharp.rc >> /tmp/master
+fi
+
+if [[ -e $name/9084.txt ]]; then
+     echo "     VMware"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/9084.txt|g" /tmp/resource/9084-vmware.rc
+     cat /tmp/resource/9084-vmware.rc >> /tmp/master
+fi
+
+
 if [[ -e $name/9100.txt ]]; then
      echo "     Printers"
      sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/9100.txt|g" /tmp/resource/printers.rc
@@ -3223,6 +3255,12 @@ if [[ -e $name/9999.txt ]]; then
      echo "     Telnet"
      sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/9999.txt|g" /tmp/resource/telnet3.rc
      cat /tmp/resource/telnet3.rc >> /tmp/master
+fi
+
+if [[ -e $name/13364.txt ]]; then
+     echo "     Rosewill RXS-3211 IP Camera Password Retriever"
+     sed -i "s|setg RHOSTS.*|setg RHOSTS file:$name\/13364.txt|g" /tmp/resource/rosewill.rc
+     cat /tmp/resource/rosewill.rc >> /tmp/master
 fi
 
 if [[ -e $name/17185.txt ]]; then
@@ -3404,7 +3442,7 @@ echo >> $filename
 echo "High Value Hosts by Port" >> $filename
 echo >> $filename
 
-HVPORTS="13 21 22 23 25 37 53 67 69 70 79 80 102 110 111 119 123 137 139 143 161 389 443 445 465 500 523 524 548 554 623 631 873 993 995 1050 1080 1099 1158 1344 1352 1433 1434 1521 1604 1720 1723 1883 1911 1962 2202 2302 2375 2628 2947 3031 3260 3306 3310 3389 3478 3632 3671 4369 5019 5060 5353 5432 5666 5672 5683 5850 5900 5984 6000 6001 6002 6003 6004 6005 6379 6481 6666 7210 7634 7777 8000 8009 8080 8081 8091 8222 8332 8333 8400 8443 9100 9160 9600 9999 10000 11211 12000 12345 17185 19150 27017 31337 35871 37777 44818 47808 49152 50000 50030 50060 50070 50075 50090 60010 60030"
+HVPORTS="13 19 21 22 23 25 37 53 67 69 70 79 80 102 110 111 119 123 135 137 139 143 161 389 407 433 443 445 465 500 502 512 513 514 523 524 548 554 563 587 623 631 636 771 831 873 902 993 995 998 1050 1080 1099 1158 1344 1352 1433 1434 1521 1604 1720 1723 1883 1900 1911 1962 2202 2302 2362 2375 2628 2947 3000 3031 3050 3260 3306 3310 3389 3478 3500 3632 3671 4369 5019 5040 5060 5353 5432 5560 5631 5632 5666 5672 5683 5850 5900 5920 5984 5985 6000 6001 6002 6003 6004 6005 6379 6481 6666 7210 7634 7777 8000 8009 8080 8081 8091 8222 8332 8333 8400 8443 8834 9000 9084 9100 9160 9600 9999 10000 11211 12000 12345 13364 17185 19150 27017 28784 30718 31337 35871 37777 44818 46824 47808 49152 50000 50030 50060 50070 50075 50090 60010 60030"
 
 for i in $HVPORTS; do
      if [[ -e $name/$i.txt ]]; then
