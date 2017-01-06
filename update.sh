@@ -67,11 +67,12 @@ else
      echo
 fi
 
-if [ -d /opt/discover/.git ]; then
-     echo -e "\e[1;34mUpdating Discover.\e[0m"
-     cd /opt/discover ; git pull
-     echo
-fi
+# Commented out discover.git upgrading
+#if [ -d /opt/discover/.git ]; then
+#     echo -e "\e[1;34mUpdating Discover.\e[0m"
+#     cd /opt/discover ; git pull
+#    echo
+#fi
 
 if [ -d /opt/Empire/.git ]; then
      echo -e "\e[1;34mUpdating Empire.\e[0m"
