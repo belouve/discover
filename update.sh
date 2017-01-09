@@ -36,6 +36,8 @@ fi
 
 echo -e "\e[1;34mUpdating Kali.\e[0m"
 apt-get update ; apt-get -y upgrade ; apt-get -y dist-upgrade ; apt-get -y autoremove ; apt-get -y autoclean ; echo
+# Line to copy-paste if you want to drop it in a terminal:
+# apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get -y autoclean
 
 if [ -d /opt/BloodHound/.git ]; then
      echo -e "\e[1;34mUpdating BloodHound.\e[0m"
