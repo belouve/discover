@@ -13,9 +13,9 @@ www.jython.org/downloads.html
 ```
 Cookies Manager+
 FoxyProxy Standard
-Live HTTP headers (clone)
 User-Agent Switcher
 Wappalyzer
+Web Developer
 ```
 ## Firefox Proxy
 ```
@@ -134,7 +134,7 @@ Target > Site map > Filter: enable Show only in-scope items > Filter
 ### Manually browse the app
 ```
 Look for target.com/sitemap.
-If present, hold down the Command key and click on about 20 links.
+If present, hold down the Command key and click on every link.
 If not present, start exploring the target by clicking on every link on every page.
 Enter a single tick (') in any input field.
 Continue until you have thoroughly browsed the target.
@@ -143,14 +143,14 @@ Continue until you have thoroughly browsed the target.
 ```
 Target > Site map > RC on the target URL > Spider this host
 Spider > Control: watch the Requests made increase.
-When the Requests and Forms queued are both zero, click Spider is running.
+When the Requests and Forms queued are both zero, click Spider is running, to stop it.
 
 Target > Site map > RC the target URL > Expand branch
 Scroll to the very bottom.
 RC on any folders that are greyed out > Delete branch
 RC on any pages that are grey or red > Copy URL > paste into Firefox
      Or RC on any pages that are grey or red > GET Empty Response
-Save the state: <appname>-spider
+
 ```
 ### Brute force directories
 ```
@@ -176,10 +176,20 @@ Clean up results when the attack completes:
      RC > Delete select items > Yes
 
 Add remaining items to Site map:
-     Select the first line and RC in the bottom pane > Request in browser > In current browser session
+     Scroll to the top of the list > sort by Payload
+     Delete any blanks lines
+     Move the Intruder window to the right so you can see the main window
+     Target > Site map 
+     Compare the folders in the Site map to the Payloads in the Intruder window.
+     Select a Payload that is not listed in the Site
+     RC > Request in browser > In current browser session
      Check: In future, just copy the URL and don't show this dialog > Copy
-     Firefox > open a new tab > paste
-     Repeat with the remaining lines.
+     Open a new tab in Firefox and paste.
+     Repeat as necessary.
+     
+Target > Site map > RC the target URL > Engagement tools > Analyze target
+Take a screenshot of the Summary tab.
+These numbers will give you an idea of how large the app is
 ```
 ### Grey folders
 ```
