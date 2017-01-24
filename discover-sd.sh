@@ -230,7 +230,9 @@ case $choice in
      echo
      echo "ARIN"
      echo "     Email                (1/$total)"
-     wget -q https://whois.arin.net/rest/pocs\;domain=$domain -O tmp.xml
+     # edited this because orignal did not get results.  Edited in next line, commented out.
+     # wget -q https://whois.arin.net/rest/pocs\;domain=$domain -O tmp.xml
+     wget -q https://whois.arin.net/ui/advanced.jsp?advanced=true&q=$domain&r=POC&POC=domain --output-document=tmp.xml
 
      # Remove all empty files
      find -type f -empty -exec rm {} +
