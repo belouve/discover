@@ -484,7 +484,9 @@ case $choice in
 
      dumpsterxls=$(grep 'xls' tmp | tr '"' ' ' | cut -d ' ' -f10)
      wget -q $dumpsterxls -O tmp.xlsx
-
+     # Two copy commands that should preserve this xlsx file, first is copy local, and should be deleted on completion, and not seen
+     cp tmp.xlsx subdumpsterfire.xlsx
+     cp tmp.xlsx $home/data/$domain/data/subdump.xlsx
      ssconvert -E Gnumeric_Excel:xlsx -T Gnumeric_stf:stf_csv tmp.xlsx tmp.csv 2>/dev/null
      cat tmp.csv | sed 's/,"//g' | egrep -v '(Hostname|MX|NS)' | cut -d ',' -f1-2 | grep -v '"' | sed 's/,/ /g' | sort -u | column -t > sub-dnsdumpster
 
