@@ -136,7 +136,6 @@ Target > Site map > Filter: enable Show only in-scope items > Filter
 Look for target.com/sitemap.
 If present, hold down the Command key and click on every link.
 If not present, start exploring the target by clicking on every link on every page.
-Enter a single tick (') in any input field.
 Continue until you have thoroughly browsed the target.
 ```
 ### Spider the app
@@ -150,7 +149,6 @@ Scroll to the very bottom.
 RC on any folders that are greyed out > Delete branch
 RC on any pages that are grey or red > Copy URL > paste into Firefox
      Or RC on any pages that are grey or red > GET Empty Response
-
 ```
 ### Brute force directories
 ```
@@ -163,7 +161,7 @@ Move the forward slash in front of the two symbols. It should look like: GET /§
 Payloads:
      Payload Sets
           Payload set: 1
-          Payload type: runtime file
+          Payload type: Runtime file
      Payload Options:
           Select file > seclists > Discovery > Web_Content > raft-medium-directories.txt > Open
      Start attack
@@ -171,18 +169,18 @@ Payloads:
 Clean up results when the attack completes:
      Filter > uncheck 4xx [request error] > Filter
      Click Status to sort by ascending.
-     Select the first line with a 302 status.
-     Hold down shift and select the last line with a 302 status.
+     Select the first line with a 302 Status.
+     Hold down shift and select the last line with a 302 Status.
      RC > Delete select items > Yes
 
 Add remaining items to Site map:
      Scroll to the top of the list > sort by Payload
      Delete any blanks lines
-     Move the Intruder window to the right so you can see the main window
+     Move the Intruder window to the side so you can see the main window
      Target > Site map 
-     Compare the folders in the Site map to the Payloads in the Intruder window.
-     Select a Payload that is not listed in the Site
-     RC > Request in browser > In current browser session
+     Compare the pages in the Site map to the Payloads in the Intruder window.
+     Select a Payload that is not listed in the Site map
+     RC > Request in browser > In current session
      Check: In future, just copy the URL and don't show this dialog > Copy
      Open a new tab in Firefox and paste.
      Repeat as necessary.
@@ -200,7 +198,13 @@ If the folder is still grey > RC > Delete branch > Yes
 ```
 Target > Site map > RC the target URL > Engagement tools > Find comments
 Sort by Item
-Review each line item for sensitive information.
+Select each line > Response > look for sensitive information.
+```
+### Check for 404 and 500 errors
+```
+Enter a single tick (') at the end of a URL.
+Modify the URL path.
+Enter a single tick (') in any input field and submit the form.
 ```
 
 ## Brute force logins
@@ -210,16 +214,16 @@ Proxy > History > find the POST request > RC > Send to Intruder
 
 Intruder > Payloads > Attack type:
      Sniper:
-          Uses a single set of payloads against a single variable.
+          Uses a single wordlist against a single variable.
      Battering ram:
-          Uses a single set of payloads against all variables.
+          Uses a single wordlist against all variables.
      Pitchfork:
-          Uses multiple payload sets.
+          Uses multiple wordlists.
           For example: you have a known list of usernames and a related list of passwords. 
           This will try the first username with the first password, then the second username with the second password, and so on.
           This is useful when checking for old accounts that should be deleted.
      Cluster bomb:
-          Uses multiple payload sets.
+          Uses multiple wordlists.
           For example: you have a known list of usernames and a non-related list of passwords.
           This will try the first username with each password, then the second username with each password, and so on.
 
