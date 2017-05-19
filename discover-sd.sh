@@ -159,7 +159,7 @@ f_banner
 echo -e "\x1B[1;34mRECON\x1B[0m"
 echo
 echo "1.  Passive"
-echo "2.  Active (NOT AUTHORIZED)"
+echo "2.  Active (N0T AUTH0RIZED)"
 echo "3.  Previous menu"
 echo
 echo -n "Choice: "
@@ -180,8 +180,8 @@ case $choice in
      echo
      echo "Usage"
      echo
-     echo "Company: Target"
-     echo "Domain:  target.com"
+     echo "Company: HackThePlanet"
+     echo "Domain:  hacktheplanet.com"
      echo
      echo $medium
      echo
@@ -198,6 +198,35 @@ case $choice in
 
      # Check for no answer
      if [[ -z $domain ]]; then
+          f_error
+     fi
+
+     echo
+     echo $medium
+     echo
+     echo "Usage"
+     echo
+     echo "Divisional Unit: PW, RPU, or RPI"
+     echo "Business Unit: AllOneWord -example- Cyborg-Healthcare"
+
+     echo
+     echo $medium
+     echo
+     echo -n "Divisional Unit: "
+     read dunit
+
+     # Check for no answer
+     if [[ -z $dunit ]]; then
+          f_error
+     fi
+
+     echo
+     echo
+     echo -n "Business Unit: "
+     read bunit
+
+     # Check for no answer
+     if [[ -z $bunit ]]; then
           f_error
      fi
 
@@ -219,6 +248,8 @@ case $choice in
           sed 's/REPLACEDOMAIN/'$domain'/g' $home/data/$domain/index.htm > tmp
           mv tmp $home/data/$domain/index.htm
      fi
+
+     now=(date +"%Y%m%d")
 
      # Number of tests
      total=33
@@ -319,7 +350,7 @@ case $choice in
      rm *-$domain.txt
      echo
 
-     echo "theHarvester"
+     echo -e "\x1B[1;34mtheHarvester \x1B[0m"
      # PTF
      if [ -f /pentest/intelligence-gathering/theharvester/theHarvester.py ]; then
           theharvester="theHarvester"
@@ -395,6 +426,7 @@ case $choice in
      column -t tmp3 > tmp4
      # Change to lower case
      cat tmp4 | tr '[A-Z]' '[a-z]' > tmp5
+     cp tmp5 $home/data/$domain/data/$dunit-$bunit-URLCRAZY-$domain-$now.txt
      sed 's/<strong>//g; s/<//g' tmp5 | grep $domain | column -t | sort -u > sub2
      echo
 
@@ -488,7 +520,8 @@ case $choice in
      wget -q $dumpsterxls -O tmp.xlsx
      # Two copy commands that should preserve this xlsx file, first is copy local, and should be deleted on completion, and not seen
      cp tmp.xlsx subdumpsterfire.xlsx
-     cp tmp.xlsx $home/data/$domain/data/subdump.xlsx
+     cp tmp.xlsx $home/data/$domain/data/subdump-$domain-$now.xlsx
+     cp tmp.xlsx $home/data/$domain/data/$dunit-$bunit-subdump-$domain-$now.xlsx
      ssconvert -E Gnumeric_Excel:xlsx -T Gnumeric_stf:stf_csv tmp.xlsx tmp.csv 2>/dev/null
      cat tmp.csv | sed 's/,"//g' | egrep -v '(Hostname|MX|NS)' | cut -d ',' -f1-2 | grep -v '"' | sed 's/,/ /g' | sort -u | column -t > sub-dnsdumpster
 
@@ -880,12 +913,12 @@ case $choice in
 #     sleep 2
 #     $web https://www.ssllabs.com/ssltest/analyze.html?d=$domain\&hideResults=on\&latest &
 #     sleep 2
-     $web $home/data/$domain/index.htm &
-     sleep 2
-     $web $home/data/$domain/data/subdomains.htm &
+#     $web $home/data/$domain/index.htm &
+#     sleep 2
+#     $web $home/data/$domain/data/subdomains.htm &
      echo
      echo
-     exit
+     f_domain
      ;;
 
      2)
