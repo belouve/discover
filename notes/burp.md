@@ -122,11 +122,11 @@ This will provide you a starting point for all future scans.
 ```
 
 ## Additional Addons
-```
+
 [Burp Suite Asset Discover](https://github.com/redhuntlabs/BurpSuite-Asset_Discover)
 [Introduction to Asset Discover](https://redhuntlabs.com/blog/asset-discovery-burp-extension.html)
 [HUNT Methodology Extensions](https://github.com/bugcrowd/HUNT)
-```
+
 
 ## Methodology
 
